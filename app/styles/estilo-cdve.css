@@ -1,0 +1,11 @@
+.resolucionExpedida { 
+	color: #483D8B !important; 
+}
+ 
+.resolucionCancelada { 
+	color:	#B22222 !important; 
+}
+
+.valorEfectivo{
+	text-align: right;
+}

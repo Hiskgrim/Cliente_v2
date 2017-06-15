@@ -1,0 +1,40 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="intro-text text-center">INFORMACIÓN CONTRATO GENERAL</h4>
+    </div>
+    <div class="panel-body">
+        <form role="form">
+            <div class="row">
+                <div
+                <div class="form-group col-lg-4">
+                    <label>NÚMERO SEMANAS</label>
+                    <input type="number" class="form-control" ng-model="datosValor.NumSemanas" required>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label>NÚMERO HORAS SEMANALES</label>
+                    <input type="number" class="form-control" ng-model="datosValor.NumHorasSemanales" required>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label>DEDICACIÓN</label>
+                    <select type="number" class="form-control" ng-model="datosValor.dedicacion" required>
+                        <option value="">--SELECCIONE--</option>
+                        <option value="hcp">HORA CATEDRA PRESTACIONES</option>
+                        <option value="hch">HORA CATEDRA HONORARIOS</option>
+                        <option value="mto">MEDIO TIEMPO OCASIONAL</option>
+                        <option value="tco">TIEMPO COMPLETO OCASIONAL</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-6"><input class="form-control btn btn-danger" value="Cancelar registro del contrato" ng-click="cancelar()">
+                </div>
+                <div class="form-group col-lg-6"><input type="submit" class="form-control btn btn-primary" value="Calcular salario con los datos proporcionados" ng-click="calcularSalario()">
+                </div>
+                <div class="form-group col-lg-12"><input type="submit" class="form-control btn btn-success" value="Realizar contrato con los datos especificados" ng-click="realizarContrato()">
+                </div>
+            </div>
+        </form>
+        <pre>
+            {{datosValor | json}}
+        </pre>
+    </div>
+</div>

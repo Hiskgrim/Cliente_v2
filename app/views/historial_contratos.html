@@ -1,0 +1,85 @@
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="page-header"> HISTORIAL CONTRATOS </h3>
+  </div>
+  <div class="panel-body">
+      <form>
+        <div class="col-lg-4">
+          <label>PERIODO</label>
+          <select class="form-control">
+            <option>FACULTAD DE INGENIERÍA</option>
+            <option>FACULTAD DE MEDIO AMBIENTE</option>
+            <option>FACULTAD TECNOLÓGICA</option>
+            <option>FACULTAD DE ARTES</option>
+            <option>FACULTAD DE CIENCIAS Y EDUCACIÓN</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <label>NIVEL ACADEMICO</label>
+          <select class="form-control">
+            <option>PREGRADO</option>
+            <option>POSGRADO</option>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <label>PERIODO</label>
+          <select class="form-control">
+            <option>2016-2</option>
+            <option>2017-1</option>
+            <option>2017-2</option>
+          </select>
+        </div>
+      </form>
+    <md-content class="md-padding">
+    <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+    <md-tab ng-repeat="tab in historialContratos.proyectos"
+    label="{{tab.Nombre}}">
+    <div class="demo-tab tab{{$index%4}}">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Buscar docente" ng-model="searchFish">
+          </div>      
+        </div>
+      </form>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>CÉDULA</th>
+            <th>EXPEDIDA</th>
+            <th>CATEGORÍA</th>
+            <th>DEDICACIÓN</th>
+            <th>HORAS SEMANALES</th>
+            <th>PERIODO VINCULACIÓN</th>
+            <th>VALOR CONTRATO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = "datoContrato in historialContratos.contratados | orderBy:sortType:sortReverse | filter:searchFish" ng-if = "datoContrato.IdProyectoCurricular==proyectos[selectedIndex].Id">
+            <td>{{datoContrato.Nombre}}</td>
+            <td>{{datoContrato.Documento}}</td>
+            <td>{{datoContrato.Expedicion}}</td>
+            <td>{{datoContrato.Categoria}}</td>
+            <td>{{datoContrato.Dedicacion}}</td>
+            <td>{{datoContrato.HorasSemanales}}</td>
+            <td>{{datoContrato.PeriodoVinculacion}}</td>
+            <td>{{datoContrato.ValorContrato}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </md-tab>
+</md-tabs>
+</md-content>
+</div>
+<div class="form-group col-lg-12">
+  <button type="submit" class="form-control btn-primary" ng-click="">Ver resolución sociada</button>
+</div>
+</div>
+
+<script type="text/javascript" src="scripts/numeroletras.js"></script>
+
+</div>

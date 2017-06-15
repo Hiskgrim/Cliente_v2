@@ -1,0 +1,73 @@
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="page-header">INFORMACIÓN DEL CONTRATO</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="row">
+                                <div class="form-group col-lg-4">
+                                    <label>VIGENCIA</label>
+                                    <input type="number" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.Vigencia" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>FORMA DE PAGO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.forma_pago_defecto.Descripcion" disabled>
+                                </div>
+                                <!--<div class="form-group col-lg-4">
+                                    <label>ORDENADOR DEL GASTO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.OrdenadorGasto" >
+                                </div>-->
+                                <div class="form-group col-lg-4">
+                                    <label>SEDE SOLICITANTE</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.sede_solicitante_defecto" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>NÚMERO CDP</label>
+                                    <select class="form-control" ng-model="contratoRegistro.contratoGeneralBase.NumeroCdp" required>
+                                        <option value="">--SELECCIONE--</option>
+                                        <option ng-repeat="opcion in contratoRegistro.cdp_opciones" value={{[opcion.DISPONIBILIDAD,opcion.NUMERONECESIDAD]}}>{{opcion.DISPONIBILIDAD}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>JUSTIFICACIÓN</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.Justificacion">
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>DESCRIPCION FORMA DE PAGO</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.DescripcionFormaPago" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>UNIDAD EJECUTORA</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.unidad_ejecutora_defecto.Nombre" disabled>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>MARCO LEGAL</label>
+                                    <input type="text" class="form-control" ng-model="contratoRegistro.regimen_contratacion_defecto.Descripcion" disabled>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>OBJETO</label>
+                                    <textarea rows="10" type="text" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.ObjetoContrato" required></textarea>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>OBSERVACIONES</label>
+                                    <textarea rows="10" type="text" class="form-control" ng-model="contratoRegistro.contratoGeneralBase.Observaciones" required></textarea>
+                                </div>
+                                <div class="form-group col-lg-8 col-lg-offset-2"><input type="submit" class="form-control btn btn-success" value="Realizar expedición de la resolución" ng-click="contratoRegistro.realizarContrato()">
+                                </div>
+                            </div>
+                        </form>
+                        <!--<pre>
+                            {{contratoRegistro.contratoGeneralBase | json}}
+                        </pre>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
