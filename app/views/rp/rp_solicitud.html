@@ -1,0 +1,255 @@
+<div class="row">
+  <div class="panel panel-default">
+    <center><h3>{{'SOLICITUD_RP' | translate}}</h3></center>
+</div>
+  <div class="col-sm-5">
+    <div class="panel panel-default">
+      <div class="panel-heading" ng-click="panelCdp = !panelCdp">
+        <h4>{{'SELECCION_CDP' | translate }}
+            <span style="float:right" class="glyphicon glyphicon glyphicon-plus" ng-show="!panelCdp"></span>
+            <span style="float:right" class="glyphicon glyphicon glyphicon-minus" ng-show="panelCdp"></span>
+          </h4>
+      </div>
+      <div ng-show="panelCdp" class="panel-body panel-collapse">
+        <div ui-grid='rpSolicitud.gridOptions_cdp' ui-grid-selection ui-grid-auto-resize class="myGrid"> </div>
+        <!--
+        <lista-cdp cdp='rpSolicitud.cdp' rubros='rpSolicitud.rubros' necesidad='rpSolicitud.necesidad' gridOptionsrubros='rpSolicitud.gridOptions_rubros'>
+        -->
+      </div>
+    </div>
+    <div class="panel panel-default class">
+      <div class="panel-heading" ng-click="panelApro = !panelApro">
+        <h4>{{'SELECCION_COMPROMISO' | translate }}
+              <span style="float:right" class="glyphicon glyphicon glyphicon-plus" ng-show="!panelApro"></span>
+              <span style="float:right" class="glyphicon glyphicon glyphicon-minus" ng-show="panelApro"></span>
+            </h4>
+      </div>
+      <div ng-show="panelApro" class="panel-body panel-collapse">
+        <div ui-grid='rpSolicitud.gridOptions_compromiso' ui-grid-selection ui-grid-auto-resize class="myGrid"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-7">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>{{'DATOS_RP' | translate }}</h4>
+      </div>
+      <div ng-show=" rpSolicitud.proveedor" class="panel-body row">
+
+        <div class="col-sm-6 rp registro_presupuestal">
+          <h3>{{'BENEFICIARIO' | translate}}</h3>
+          <table name="info_beneficiario" class="table">
+              <tr>
+                <th>
+                  {{'NOMBRE_CONTRATISTA' | translate}}:
+                </th>
+                <td>
+                  {{rpSolicitud.contrato.NombreContratista}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'DOCUMENTO_CONTRATISTA' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.contrato.ContratistaId}}
+                </td>
+              </tr>
+          </table>
+        </div>
+
+        <div class="col-sm-5 rp registro_presupuestal">
+          <h3>{{'COMPROMISO' | translate}}</h3>
+          <table name="info_compromiso" class="table">
+            <tbody>
+              <tr>
+                <th>
+                  {{'NUMERO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.compromiso.Id}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'VIGENCIA' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.compromiso.Vigencia}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'OBJETO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.compromiso.Objeto}}
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+
+        <div class="col-sm-6 rp registro_presupuestal">
+          <h3>{{'CONTRATO' | translate}}</h3>
+          <table class="table">
+              <tr>
+                <th>
+                  {{'NUMERO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.contrato.Id}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'VIGENCIA' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.contrato.Vigencia}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'VALOR' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.contrato.ValorContrato | currency}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'MODALIDAD_SELECCION' | translate}}
+                </th>
+                <td>
+                  {{necesidad.Necesidad.ModalidadSeleccion.Nombre}}
+                </td>
+              </tr>
+          </table>
+        </div>
+        <div class="col-sm-5 rp registro_presupuestal">
+          <h3>{{'CDP' | translate}}</h3>
+          <table name="info_beneficiario" class="table">
+            <tbody>
+              <tr>
+                <th>
+                  {{'CONSECUTIVO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.cdp.NumeroDisponibilidad}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'OBJETO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.cdp.Solicitud.SolicitudDisponibilidad.Necesidad.Objeto}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'RESPONSABLE' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.responsable.PrimerApellido}} {{rpSolicitud.responsable.SegundoApellido}} {{rpSolicitud.responsable.PrimerNombre}} {{rpSolicitud.responsable.SegundoNombre}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'RESPONSABLE_DOCUMENTO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.responsable.Id}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'UNIDAD_EJECUTORA' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.cdp.UnidadEjecutora.Nombre}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  {{'ESTADO' | translate}}
+                </th>
+                <td>
+                  {{rpSolicitud.cdp.Estado.Nombre}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+
+
+        <div class="col-sm-12">
+          <form class="form-horizontal" ng-show="rpSolicitud.gridOptions_rubros.data.length>0">
+            <fieldset>
+              <h3>{{'DATOS_APROPIACIONES' | translate }}</h3>
+              <div ui-grid="rpSolicitud.gridOptions_rubros" ui-grid-selection ui-grid-auto-resize class="col-md-11" ng-style="getTableStyle()"></div>
+
+              <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <br>
+                  <button id="btn_agregar_rubr" name="btn_agregar_rubr" class="btn btn-outline btn-primary" ng-click="rpSolicitud.agregarRubro(rpSolicitud.selectRubro)">
+              {{'BTN.AGREGAR' | translate }}
+                  </button>
+                  <br>
+                </div>
+                </div>
+                <br><br>
+        </div>
+        <br>
+        <div ng-repeat="rubro in rpSolicitud.rubros_seleccionados">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+              <div class="panel-heading" align="center">
+                {{rubro.Apropiacion.Rubro.Codigo + ' / ' + rubro.Apropiacion.Rubro.Descripcion}}
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>{{'SALDO_AP' | translate}}</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input id="saldo_apropiacion" name="saldo_apropiacion" disabled type="text" ui-money-mask="0" placeholder="Saldo" class="form-control input-md currency" required="" ng-model="rubro.Valor">
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>{{'VALOR_RP' | translate}}</label>
+                  </div>
+                  <div class="col-md-6">
+                    <input id="valor_rp" name="valor_rp" type="text" ui-money-mask="0" placeholder="Valor" class="form-control input-md" required="true" ng-model="rubro.ValorAsignado">
+                  </div>
+                </div>
+                <br><br>
+                <div class="col-md-8">
+                  <button name="btn_quitar_rbr" class="btn btn-danger" ng-click="rpSolicitud.quitarRubro(rubro.Id)">
+                    {{'BTN.QUITAR_RUBRO' | translate}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br><br>
+        <div class="col-md-3 col-md-offset-4" ng-show="rpSolicitud.gridOptions_rubros.data.length>0">
+          <button id="btn_registrar" name="btn_registrar" class="btn btn-outline btn-success" ng-click="rpSolicitud.Registrar()">
+            {{'BTN.REGISTRAR' | translate}}
+          </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

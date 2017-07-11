@@ -1,48 +1,115 @@
 'use strict';
 /**
  * @ngdoc function
- * @name clienteApp.controller:menuCtrl
+ * @name contractualClienteApp.controller:menuCtrl
  * @description
  * # menuCtrl
- * Controller of the clienteApp
+ * Controller of the contractualClienteApp
  */
-angular.module('clienteApp')
-.controller('menuCtrl', function($location, $http, $scope, token_service, notificacion, $translate) {
+angular.module('contractualClienteApp')
+.controller('menuCtrl', function($location, $http, $scope, token_service, notificacion, $translate, $route) {
     var paths = [];
     $scope.language = {
         es:"btn btn-primary btn-circle btn-outline active",
         en:"btn btn-primary btn-circle btn-outline"
     };
+
     $scope.notificacion = notificacion;
     $scope.actual = "";
     $scope.token_service = token_service;
     $scope.breadcrumb = [];
-
-    $scope.actual = "";
-    $scope.token_service = token_service;
-    $scope.breadcrumb = [];
-      $scope.menu_service = [{ //aqui va el servicio de el app de configuracion
-        "Id": 6,
-        "Nombre": "Resoluciones",
-        "Url": "resolucion_lista",
-        "Opciones": null//contenidoResolucion
-      }];
-
-      var recorrerArbol = function(item, padre) {
-        var padres = "";
-        for (var i = 0; i < item.length; i++) {
-          if (item[i].Opciones === null) {
-            padres = padre + " , " + item[i].Nombre;
-            paths.push({
-              'path': item[i].Url,
-              'padre': padres.split(",")
-            });
-          } else {
-            recorrerArbol(item[i].Opciones, padre + "," + item[i].Nombre);
-          }
+    $scope.menu_service = [
+      { //aqui va el servicio de el app de configuracion
+        "Id": 3,
+        "Nombre": "Seguimiento y control",
+        "Url": "url_nivel_1",
+        "Opciones": [
+        {
+          "Id": 1,
+          "Nombre": "Segumiento Financiero",
+          "Url": "seguimientoycontrol/financiero",
+          "Opciones": null
+        },
+        {
+          "Id": 2,
+          "Nombre": "Segumiento Legal",
+          "Url": "",
+          "Opciones": null
+        },
+        {
+          "Id": 3,
+          "Nombre": "Segumiento Tecnico",
+          "Url": "",
+          "Opciones": null
         }
-        return padres;
-      };
+      ]
+      },
+    { //aqui va el servicio de el app de configuracion
+      "Id": 2,
+      "Nombre": "Necesidad",
+      "Url": "url_nivel_1",
+      "Opciones": [{
+        "Id": 3,
+        "Nombre": "Solicitud de Necesidad",
+        "Url": "necesidad/solicitud_necesidad",
+        "Opciones": null
+      },
+      {
+        "Id": 4,
+        "Nombre": "Gestion de Necesidades",
+        "Url": "necesidades",
+        "Opciones": null
+      }]
+    },
+    { //RP
+      "Id": 1,
+      "Nombre": "RP",
+      "Url": "",
+      "Opciones": [
+        { //Consulta de solicitud de RP
+          "Id": 1,
+          "Nombre": "Solicitar registro presupuestal",
+          "Url": "rp_solicitud_personas",
+          "Opciones": null
+        }
+      ]
+    },
+    { 
+      "Id": 6,
+      "Nombre": "Vinculación especial",
+      "Url": "",
+      "Opciones": [
+      {
+        "Id": 6,
+        "Nombre": "Gestión de resoluciones",
+        "Url": "vinculacionespecial/resolucion_gestion",
+        "Opciones": null
+      },
+      {
+        "Id": 6,
+        "Nombre": "Administración de resoluciones",
+        "Url": "vinculacionespecial/resolucion_administracion",
+        "Opciones": null
+      }
+      ]
+    }
+  ];
+
+    var recorrerArbol = function(item, padre) {
+      var padres = "";
+      for (var i = 0; i < item.length; i++) {
+        if (item[i].Opciones === null) {
+          padres = padre + " , " + item[i].Nombre;
+          paths.push({
+            'path': item[i].Url,
+            'padre': padres.split(",")
+          });
+        } else {
+          recorrerArbol(item[i].Opciones, padre + "," + item[i].Nombre);
+        }
+      }
+      return padres;
+    };
 
 
 
@@ -56,13 +123,12 @@ angular.module('clienteApp')
         }
       }
     };
-
+    recorrerArbol($scope.menu_service, "");
     paths.push({padre:["","Notificaciones","Ver Notificaciones"],path:"notificaciones"});
 
     $scope.$on('$routeChangeStart', function(next, current) {
       $scope.actual = $location.path();
       update_url();
-      console.log(next + current);
     });
 
     $scope.changeLanguage = function (key){
@@ -78,6 +144,7 @@ angular.module('clienteApp')
                 break;
             default:
         }
+        $route.reload();
     };
     //Pendiente por definir json del menu
     (function($) {

@@ -2,33 +2,29 @@
 
 /**
  * @ngdoc service
- * @name clienteApp.contratacionMidService
+ * @name contractualClienteApp.agoraService
  * @description
- * # contratacionMidService
- * Factory in the clienteApp.
+ * # agoraService
+ * Factory in the contractualClienteApp.
  */
-angular.module('sicapital_service',[])
-  .factory('sicapital_request', function ($http) {
-    // Service logic
-    // ...
-    var path = "http://10.20.2.15/sicws/ws/sicapitalAPI.php/?/";
-
-    // Public API here
-    return {
-      getAll: function (table,params) {
-        return $http.get(path+table+"/?"+params);
-      },
-      post: function (table,elemento) {
-        return $http.post(path+table,elemento);
-      },
-      delete: function (table,id) {
-        return $http.delete(path+table+"/"+id);
-      },
-      getOne: function (table,id) {
-        return $http.get(path+table+"/"+id);
-      },
-      put: function (table,id,elemento) {
-        return $http.put(path+table+"/"+id,elemento);
-      }
-    };
-  });
+angular.module('sicapitalService',[])
+.factory('sicapitalRequest', function ($http) {
+  // Service logic
+  // ...
+  var path = "http://10.20.2.15/sicws/ws/sicapitalAPI.php/?/";
+  // Public API here
+  return {
+    get: function (tabla,params) {
+      return $http.get(path+tabla+"/"+params);
+    },
+    post: function (tabla,elemento) {
+      return $http.post(path+tabla,elemento);
+    },
+    put: function (tabla,id,elemento) {
+      return $http.put(path+tabla+"/"+id,elemento);
+    },
+    delete: function (tabla,id) {
+      return $http.delete(path+tabla+"/"+id);
+    }
+  };
+});

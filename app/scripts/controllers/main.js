@@ -2,11 +2,16 @@
 
 /**
  * @ngdoc function
- * @name clienteApp.controller:MainCtrl
+ * @name contractualClienteApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the clienteApp
+ * Controller of the contractualClienteApp
  */
-angular.module('clienteApp')
+angular.module('contractualClienteApp')
   .controller('MainCtrl', function () {
+    this.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
   });

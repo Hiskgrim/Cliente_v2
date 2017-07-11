@@ -7,12 +7,12 @@
  * # hojasDeVidaService
  * Factory in the clienteApp.
  */
-angular.module('hojas_de_vida_service',[])
-  .factory('hojas_de_vida_request', function ($http) {
+angular.module('kyronService',[])
+  .factory('kyronRequest', function ($http) {
 
     // Service logic
     // ...
-    var path = "http://localhost:8081/v1/";
+    var path = "http://10.20.0.254/hvapi/v1/";
 
     // Public API here
     return {

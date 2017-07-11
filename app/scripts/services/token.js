@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc service
- * @name clienteApp.token
+ * @name contractualClienteApp.token
  * @description
  * # token
- * Factory in the clienteApp.
+ * Factory in the contractualClienteApp.
  */
 
 
@@ -39,7 +39,7 @@ req.onreadystatechange = function(e) {
   }
 };
 
-angular.module('clienteApp')
+angular.module('contractualClienteApp')
   .factory('token_service', function($location, $http, $localStorage) {
     var service = {
       local: $localStorage.$default(params),

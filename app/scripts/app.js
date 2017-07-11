@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name clienteApp
+ * @name contractualClienteApp
  * @description
- * # clienteApp
+ * # contractualClienteApp
  *
  * Main module of the application.
  */
 angular
-  .module('clienteApp', [
+  .module('contractualClienteApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -25,17 +25,27 @@ angular
     'ui.grid.cellNav',
     'ui.grid.treeView',
     'ui.grid.selection',
+    'ui.grid.pagination',
     'ui.grid.exporter',
+    'ui.grid.autoResize',
     'ngStorage',
     'ngWebSocket',
     'angularMoment',
     'ui.utils.masks',
     'pascalprecht.translate',
-    'hojas_de_vida_service',
+    'financieraService',
+    'coreService',
+    'administrativaService',
+    'agoraService',
+    'oikosService',
+    'financieraMidService',
+    'adminMidService',
+    'sicapitalService',
+    'nvd3',
+    'kyronService',
     'contratacion_service',
-    'academica_service',
     'contratacion_mid_service',
-    'sicapital_service'
+    'titan_service',
   ])
     .run(function(amMoment) {
       amMoment.changeLocale('es');
@@ -52,46 +62,87 @@ angular
         templateUrl: 'views/notificaciones.html',
         controller: 'NotificacionesCtrl',
         controllerAs: 'notificaciones'
+
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .when('/resolucion_generacion', {
-        templateUrl: 'views/resolucion_generacion.html',
+      .when('/necesidad/solicitud_necesidad', {
+        templateUrl: 'views/necesidad/solicitud_necesidad.html',
+        controller: 'SolicitudNecesidadCtrl',
+        controllerAs: 'solicitudNecesidad'
+      })
+      .when('/necesidades', {
+        templateUrl: 'views/necesidad/necesidades.html',
+        controller: 'NecesidadesCtrl',
+        controllerAs: 'necesidades'
+      })
+      .when('/rp_solicitud_personas', {
+        templateUrl: 'views/rp/rp_solicitud_personas.html',
+        controller: 'RpSolicitudPersonasCtrl',
+        controllerAs: 'rpSolicitudPersonas'
+      })
+      .when('/rp/rp_solicitud/', {
+        templateUrl: 'views/rp/rp_solicitud.html',
+        controller: 'RpSolicitudCtrl',
+        controllerAs: 'rpSolicitud'
+      })
+      .when('/seguimientoycontrol/financiero', {
+        templateUrl: 'views/seguimientoycontrol/financiero.html',
+        controller: 'SeguimientoycontrolFinancieroCtrl',
+        controllerAs: 'sFinanciero'
+      })
+      .when('/seguimientoycontrol/financiero/contrato', {
+        templateUrl: 'views/seguimientoycontrol/financiero/contrato.html',
+        controller: 'SeguimientoycontrolFinancieroContratoCtrl',
+        controllerAs: 'sFcontrato'
+      })
+      .when('/seguimientoycontrol/financiero/ordenes_pago', {
+        templateUrl: 'views/seguimientoycontrol/financiero/ordenes_pago.html',
+        controller: 'SeguimientoycontrolFinancieroOrdenesPagoCtrl',
+        controllerAs: 'sFordenesPago'
+      })
+      .when('/seguimientoycontrol/financiero/estadisticas', {
+        templateUrl: 'views/seguimientoycontrol/financiero/estadisticas.html',
+        controller: 'SeguimientoycontrolFinancieroEstadisticasCtrl',
+        controllerAs: 'sFestadisticas'
+      })
+      .when('/vinculacionespecial/resolucion_generacion', {
+        templateUrl: 'views/vinculacionespecial/resolucion_generacion.html',
         controller: 'ResolucionGeneracionCtrl',
         controllerAs: 'resolucionGeneracion'
       })
-      .when('/hojas_de_vida_seleccion/:idResolucion', {
-        templateUrl: 'views/hojas_de_vida_seleccion.html',
+      .when('/vinculacionespecial/hojas_de_vida_seleccion/:idResolucion', {
+        templateUrl: 'views/vinculacionespecial/hojas_de_vida_seleccion.html',
         controller: 'HojasDeVidaSeleccionCtrl',
         controllerAs: 'hojasDeVidaSeleccion'
       })
-      .when('/contrato_registro', {
-        templateUrl: 'views/contrato_registro.html',
+      .when('/vinculacionespecial/contrato_registro', {
+        templateUrl: 'views/vinculacionespecial/contrato_registro.html',
         controller: 'ContratoRegistroCtrl',
         controllerAs: 'contratoRegistro'
       })
-      .when('/contrato_detalle', {
-        templateUrl: 'views/contrato_detalle.html',
-        controller: 'ContratoDetalleCtrl',
-        controllerAs: 'contratoDetalle'
+      .when('/vinculacionespecial/resolucion_gestion', {
+        templateUrl: 'views/vinculacionespecial/resolucion_gestion.html',
+        controller: 'ResolucionGestionCtrl',
+        controllerAs: 'resolucionGestion'
       })
-      .when('/resolucion_lista', {
-        templateUrl: 'views/resolucion_lista.html',
-        controller: 'ResolucionListaCtrl',
-        controllerAs: 'resolucionLista'
-      })
-      .when('/resolucion_detalle/:idResolucion', {
-        templateUrl: 'views/resolucion_detalle.html',
+      .when('/vinculacionespecial/resolucion_detalle/:idResolucion', {
+        templateUrl: 'views/vinculacionespecial/resolucion_detalle.html',
         controller: 'ResolucionDetalleCtrl',
         controllerAs: 'resolucionDetalle'
       })
-      .when('/resolucion_vista', {
-        templateUrl: 'views/resolucion_vista.html',
+      .when('/vinculacionespecial/resolucion_vista', {
+        templateUrl: 'views/vinculacionespecial/resolucion_vista.html',
         controller: 'ResolucionVistaCtrl',
         controllerAs: 'resolucionVista'
+      })
+      .when('/vinculacionespecial/resolucion_administracion', {
+        templateUrl: 'views/vinculacionespecial/resolucion_administracion.html',
+        controller: 'ResolucionAdministracionCtrl',
+        controllerAs: 'resolucionAdministracion'
       })
       .otherwise({
         redirectTo: '/'

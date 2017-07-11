@@ -11,7 +11,7 @@ angular.module('contratacion_service',[])
   .factory('contratacion_request', function ($http) {
     // Service logic
     // ...
-    var path = "http://localhost:8080/v1/";
+    var path = "http://10.20.0.254/cdve_api_crud/v1/";
 
     // Public API here
     return {

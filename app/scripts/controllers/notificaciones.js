@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name clienteApp.controller:NotificacionesCtrl
+ * @name contractualClienteApp.controller:NotificacionesCtrl
  * @description
  * # NotificacionesCtrl
- * Controller of the clienteApp
+ * Controller of the contractualClienteApp
  */
-angular.module('clienteApp')
+angular.module('contractualClienteApp')
   .controller('NotificacionesCtrl', function($scope, notificacion) {
     $scope.imagePath = 'images/yeoman.png';
     $scope.notificacion = notificacion;

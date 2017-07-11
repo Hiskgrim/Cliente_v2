@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('clienteApp')
+angular.module('contractualClienteApp')
 .controller("footerCtrl", function($scope) {
     //var ctrl = this;
     $scope.enlaces_universitarios = [{
